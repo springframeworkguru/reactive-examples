@@ -28,7 +28,16 @@ class PersonRepositoryImplTest {
 
     @Test
     void getByIdSubscribe() {
-        Mono<Person> personMono = personRepository.getById(1);
+        Mono<Person> personMono = personRepository.getById(2);
+
+        personMono.subscribe(person -> {
+            System.out.println(person.toString());
+        });
+    }
+
+    @Test
+    void getByIdSubscribeNotFound() {
+        Mono<Person> personMono = personRepository.getById(9);
 
         personMono.subscribe(person -> {
             System.out.println(person.toString());
