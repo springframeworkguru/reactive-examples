@@ -28,7 +28,8 @@ class PersonRepositoryImplTest {
 
     @Test
     void getByIdSubscribe() {
-        Mono<Person> personMono = personRepository.getById(1);
+        Integer idToSearch = 1;
+        Mono<Person> personMono = personRepository.getById(idToSearch);
         personMono.subscribe(person -> System.out.println(person.toString()));
     }
 
